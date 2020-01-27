@@ -27,61 +27,6 @@ Figure 1. The geometric parameters and atom labeling used for the description of
 
 
 
-<h2>  Processing a structure  </h2>
-
-
-<! ucitavanje imena atoma>
-<form action="" method="post">
-Please upload .cif file: <input type="file" id="myFile" name="filename"><br>
-
-Please enter 3 atom names of the 1st water: <input type="text" name="name"><br>
-(Example:  H8 O4 H9 ) <br>
- 
-
-Please enter 3 atom names of the 2nd water: <input type="text" name="name2"><br>
-(Example:  H8 O4 H9. It could be the same as for the 1st water molecule, in the case of the crystallographic cell image)  
-<p>
-
-
-<!// ostavi imena atoma u poljima i posle klikanja na dugme>
-
-
-<input type="submit"  value="Determine water/water interaction type" >
-</form>
-
-
-
-<!izvrsavanje programa na dugme kada se klikne na dugme>
-  <?php
-
- if (isset($_POST['name']) and isset($_POST['name2']) and  isset($_POST['filename']))    /// uslov da svi atomi budu tu
-    {
-
-$outputATOMS1= $_POST["name"];
-$outputATOMS2= $_POST["name2"];
-$cif= $_POST["filename"];
-//stampanje imena atoma
-echo " CIF file:    </pre>$cif</pre>";
-echo "<br />"; // creating a new line
-
-echo "1st water:    </pre>$outputATOMS1</pre>";
-echo "<br />"; // creating a new line
-
-echo " 2nd water:    </pre>$outputATOMS2</pre>";
-
-
-$output = shell_exec(" python kriterijum.py $cif   $outputATOMS1   $outputATOMS2");
-
-
-
-//stampanje rezultata programa>
-echo "<pre>$output</pre>";
-
-
-}
-    ?> 
-
-Contact:  ivana_stankovic@chem.bg.ac.rs
 
 </body>
 </html>
